@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
 		const { rows } = await pool.query("SELECT email, is_admin FROM users WHERE email = $1", [user.data.email])
 
 		if (!rows.length) {
-			await pool.query("INSERT INTO users (fullname, email, picture) VALUES ($1, $2, $3)", [
+			await pool.query("INSERT INTO users (fullname, email, picture, is_admin) VALUES ($1, $2, $3, TRUE)", [
 				user.data.name,
 				user.data.email,
 				user.data.picture,

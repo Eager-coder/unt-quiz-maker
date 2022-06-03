@@ -33,6 +33,7 @@ const Profile = () => {
 	return (
 		<div>
 			<h1>Profile</h1>
+			<h2>Your quizzes</h2>
 			{quizzes.length && !isLoading ? (
 				<table className="table w-full">
 					<thead>
@@ -89,7 +90,7 @@ const QuizRow: FC<{ quiz: Quiz; rowCount: number }> = ({ quiz, rowCount }) => {
 			</td>
 			<td>{new Date(Number(quiz.created_at)).toLocaleString()}</td>
 			<td>
-				{score || (
+				{<span className="bg-cyan-100 py-1 px-4 font-semibold rounded-lg">{score}</span> || (
 					<div>
 						<span className="block">No score</span>
 						<button disabled={isLoading} onClick={getScore} className="btn btn-xs">
